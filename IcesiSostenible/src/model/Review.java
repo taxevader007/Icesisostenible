@@ -4,9 +4,10 @@ public class Review extends Evidence {
 
 	private int textualReview;
 
-	public Review() {
-		// TODO - implement Review.Review
-		throw new UnsupportedOperationException();
+	public Review(String evidenceName, String evidenceDescription, String fileURL, String relatedProject,
+			String associatedPointInterest, String registrationDate, int textualReview) {
+		super(evidenceName, evidenceDescription, fileURL, relatedProject, associatedPointInterest, registrationDate);
+		this.textualReview = textualReview;
 	}
 
 	public void getTextualReview() {
