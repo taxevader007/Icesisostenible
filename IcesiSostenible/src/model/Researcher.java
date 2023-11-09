@@ -1,14 +1,16 @@
 package model;
 
-public class Researcher extends Usuario {
+public class Researcher extends User {
 
 	private String name;
 	private String email;
 	private String phone;
 
-	public Researcher() {
-		// TODO - implement Researcher.Researcher
-		throw new UnsupportedOperationException();
+	public Researcher(String userName, String password, String name, String email, String phone) {
+		super(userName, password);
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
 	}
 
 	/**

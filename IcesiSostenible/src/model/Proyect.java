@@ -68,6 +68,7 @@ public class Proyect {
 	public void setResearchername(String researchername) {
 		this.researchername = researchername;
 	}
+	
 
 	public String getPilar() {
 		// TODO - implement Proyecto.getPilar
@@ -106,7 +107,15 @@ public class Proyect {
 	public void setProyectName(String proyectName) {
 		this.proyectName = proyectName;
 	}
+public String getPilarType() {
+		return pilarType;
+	}
 
+	public void setPilarType(String pilarType) {
+		this.pilarType = pilarType;
+	}
+
+	
 	public String getProyectIdentifier() {
 		return this.proyectIdentifier;
 	}

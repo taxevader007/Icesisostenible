@@ -1,20 +1,15 @@
 package model;
 
-public class Visitants extends Usuario {
+public class Visitants extends User {
 
-	public Visitants() {
-		// TODO - implement Visitants.Visitants
-		throw new UnsupportedOperationException();
+	public Visitants(String userName, String password) {
+		super(userName, password);
+		
 	}
 
 	/**
-	 * 
 	 * @param userName
 	 * @param password
 	 */
-	public void registerVisitants(String userName, String password) {
-		// TODO - implement Visitants.registerVisitants
-		throw new UnsupportedOperationException();
-	}
 
 }

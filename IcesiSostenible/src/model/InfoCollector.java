@@ -1,29 +1,18 @@
 package model;
 
-public class InfoCollector extends Usuario {
+public class InfoCollector extends User {
+    private String name;
+    private String email;
+    private String phone;
 
-	private String name;
-	private String email;
-	private String phone;
+    public InfoCollector(String userName, String password, String name, String email, String phone) {
+        super(userName, password);
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
 
-	public InfoCollector() {
-		// TODO - implement InfoCollector.InfoCollector
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param userName
-	 * @param password
-	 * @param name
-	 * @param email
-	 * @param phone
-	 */
-	public void registerInfoCollector(String userName, String password, String name, String email, String phone) {
-		// TODO - implement InfoCollector.registerInfoCollector
-		throw new UnsupportedOperationException();
-	}
-
+	
 	public String getName() {
 		return this.name;
 	}
