@@ -7,7 +7,7 @@ public class Review extends Evidence {
 	String associatedPointInterest, String registrationDate) {
 		super(evidenceName, evidenceDescription, fileURL, relatedProject,
 		associatedPointInterest,registrationDate);
-		this.textualReview = textualReview;
+		
 	
 		
 	}
