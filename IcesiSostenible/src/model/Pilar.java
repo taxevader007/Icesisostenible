@@ -1,24 +1,41 @@
 package model;
+
 import java.util.ArrayList;
 
-public abstract class Pilar {
+public class Pilar {
 
-	private ArrayList<String> project;
-	/**
-	 * 
-	 * @param project
-	 */
-	public void Pillar() {
-		// TODO - implement Pilar.Pillar
-		throw new UnsupportedOperationException();
+	private PilarType pilarType;
+	private ArrayList<Project> projects;
+	
+
+	public Pilar(PilarType pilarType) {
+		this.pilarType = pilarType;
+		this.projects = new ArrayList<Project>();
 	}
 
-	public ArrayList<String> getProject() {
-		return project;
+
+	public PilarType getPilarType() {
+		return pilarType;
 	}
 
-	public void setProject(ArrayList<String> project) {
-		this.project = project;
+
+	public void setPilarType(PilarType pilarType) {
+		this.pilarType = pilarType;
 	}
 
+
+	public ArrayList<Project> getProjects() {
+		return projects;
+	}
+
+
+	public void setProjects(ArrayList<Project> projects) {
+		this.projects = projects;
+	}
+
+	public void addProject(Project project){
+		this.projects.add(project);
+	}
+
+	
 }

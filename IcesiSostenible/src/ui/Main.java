@@ -2,6 +2,7 @@ package ui;
 
 import model.Controller;
 import java.util.InputMismatchException;
+import java.util.Calendar;
 import java.util.Scanner;
 
 
@@ -31,13 +32,19 @@ public class Main {
     }
 
 
+
 	public void menu() {
         System.out.println("""
-                MENU
-                0. exit
-                1. register user
-				
-
+			MENU
+			0. exit
+			1. register user
+			2. Manage proyects
+			3. Manage evidences
+			4. Manage points of interest
+			5. Test cases
+			6. Info pilar and their proyects
+			7. Info proyect and evidences and type of review and type of evidence
+			8. Emulate access users types	
                     """);
 
     }
@@ -48,6 +55,7 @@ public class Main {
                 System.out.println("bye");
             }
             case 1 -> registerUser();
+			case 2 -> manageProyects();
             default -> {
                 System.out.println("Invalid");
             }
@@ -57,6 +65,8 @@ public class Main {
 
 	public void registerUser () {
 		System.out.println("""
+		enter user type
+
 		1. register visitants
 		2. register info collector
 		3. register researcher		
@@ -114,12 +124,83 @@ public class Main {
 		
 	}
 
+	public void manageProyects() {
+		System.out.println("""
+		1. register proyect
+		2. modify proyect
+		3. remove proyect
+		""");
+		int proyectOp;
 
-	public void registerProyect() {
+		try {
+            proyectOp = scan.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+            scan.next();
+            return;
+        }
+
+
+		switch (proyectOp) {
+			case 1 -> registerProyect();
+			case 2 -> modifyProject();
+			case 3 -> removeProyect();
+
+			default -> {
+				System.out.println("Invalid");
+			}
+		}
 		
 	}
 
+
+	public void registerProyect() {
+		int photoCreationYear;
+		int photoCreationMonth;
+		int photoCreationDay;
+
+		System.out.println("Enter researcher name");
+		String researchername = scan.next();
+		System.out.println("Enter pilar type");
+		String pilarType = scan.next();
+		System.out.println("Enter proyect status");
+		String proyectStatus = scan.next();
+		System.out.println("Enter proyect name");
+		String proyectName = scan.next();
+		System.out.println("Enter proyect identifier");
+		String proyectIdentifier = scan.next();
+		System.out.println("Enter proyect description");
+		String proyectDescription = scan.next();
+		System.out.println("Enter initial date year");
+		photoCreationYear = scan.nextInt();
+		System.out.println("Enter initial date month");
+		photoCreationMonth = scan.nextInt();
+		System.out.println("Enter initial date day");
+		photoCreationDay = scan.nextInt();
+
+		Calendar initialDate = Calendar.getInstance();
+		initialDate.set(photoCreationYear, photoCreationMonth - 1, photoCreationDay);
+		
+		System.out.println("Enter end date year");
+		photoCreationYear = scan.nextInt();
+		System.out.println("Enter end date month");
+		photoCreationMonth = scan.nextInt();
+		System.out.println("Enter end date day");
+		photoCreationDay = scan.nextInt();
+
+		Calendar endDate = Calendar.getInstance();
+		endDate.set(photoCreationYear, photoCreationMonth - 1, photoCreationDay);
+
+		controller.registerProyect(researchername, pilarType, proyectStatus, proyectName, proyectIdentifier, proyectDescription, initialDate, endDate);
+		
+	
+    }
+
 	public void modifyProject() {
+
+
+
+		
 		
 	}
 
