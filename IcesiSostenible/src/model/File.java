@@ -1,4 +1,5 @@
 package model;
+import java.util.Calendar;
 
 public class File extends Evidence {
 
@@ -6,9 +7,9 @@ public class File extends Evidence {
 	
 
 	public File(String evidenceName, String evidenceDescription, String fileURL, String relatedProject,
-			String associatedPointInterest, String registrationDate, int url) {
-		super(evidenceName, evidenceDescription, fileURL, relatedProject, associatedPointInterest, registrationDate);
-		Url = url;
+			String associatedPointInterest, Calendar registrationDate, int url) {
+				super(evidenceName, evidenceDescription, fileURL, relatedProject, associatedPointInterest, registrationDate);
+				Url = url;
 	}
 
 	public int getUrl() {
