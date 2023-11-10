@@ -12,7 +12,7 @@ public class Researcher extends User {
 		this.email = email;
 		this.phone = phone;
 	}
-
+	
 	/**
 	 * 
 	 * @param userName
@@ -21,11 +21,7 @@ public class Researcher extends User {
 	 * @param email
 	 * @param phone
 	 */
-	public void registerResearcher(String userName, String password, String name, String email, String phone) {
-		// TODO - implement Researcher.registerResearcher
-		throw new UnsupportedOperationException();
-	}
-
+	
 	public String getName() {
 		return this.name;
 	}

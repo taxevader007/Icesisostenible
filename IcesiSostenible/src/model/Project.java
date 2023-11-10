@@ -102,6 +102,20 @@ public class Project {
 		this.endDate = endDate;
 	}
 
+    public Evidence[] getEvidences() {
+        return null;
+    }
+
+	public void setEvidences(Evidence[] evidences) {
+	}
+
+    public void addPointInterest(PointInterest pointInterest) {
+    }
+
+    public PointInterest[] getPointInterests() {
+        return null;
+    }
+
 
 	
 

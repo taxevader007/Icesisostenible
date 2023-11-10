@@ -3,123 +3,73 @@ package model;
 public class PointInterest {
 
 	private String pointInterestName;
-	private String associatedPilar;
-	private String associatedProyect;
+	private String associatedEvidence;
 	private String comment;
 	private String codigoQR;
-	private int[][] cordinates;
+	private int x;
+	private int y;
 
-	public PointInterest() {
-		// TODO - implement PointInterest.PointInterest
-		throw new UnsupportedOperationException();
+
+	public PointInterest(String pointInterestName, String associatedEvidence, String comment,
+			String codigoQR, int x, int y) {
+		this.pointInterestName = pointInterestName;
+		this.comment = comment;
+		this.codigoQR = codigoQR;
+		this.x = x;
+		this.y = y;
+
 	}
 
-	/**
-	 * 
-	 * @param pointInterestName
-	 * @param associatedPillar
-	 * @param comment
-	 * @param codigoQR
-	 * @param cordinates
-	 */
-	public void registerPointInterest(String pointInterestName, String associatedPillar, String comment, String codigoQR, String cordinates) {
-		// TODO - implement PointInterest.registerPointInterest
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param pointInterestName
-	 * @param associatedPillar
-	 * @param comment
-	 * @param codigoQR
-	 * @param cordinates
-	 */
-	public void modifyPointInterest(String pointInterestName, String associatedPillar, String comment, String codigoQR, String cordinates) {
-		// TODO - implement PointInterest.modifyPointInterest
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param pointInterestName
-	 * @param associatedPillar
-	 */
-	public void removePointInterest(String pointInterestName, String associatedPillar) {
-		// TODO - implement PointInterest.removePointInterest
-		throw new UnsupportedOperationException();
-	}
-
-	public String getPointInterestName() {
+    public String getPointInterestName() {
 		return this.pointInterestName;
 	}
 
-	/**
-	 * 
-	 * @param pointInterestName
-	 */
 	public void setPointInterestName(String pointInterestName) {
 		this.pointInterestName = pointInterestName;
 	}
 
-	public String getAssociatedPilar() {
-		return this.associatedPilar;
+	public String getAssociatedEvidence() {
+		return associatedEvidence;
 	}
 
-	/**
-	 * 
-	 * @param associatedPilar
-	 */
-	public void setAssociatedPilar(String associatedPilar) {
-		this.associatedPilar = associatedPilar;
+	public void setAssociatedEvidence(String associatedEvidence) {
+		this.associatedEvidence = associatedEvidence;
 	}
 
-	public String getAssociatedProyect() {
-		return this.associatedProyect;
-	}
-
-	/**
-	 * 
-	 * @param associatedProyect
-	 */
-	public void setAssociatedProyect(String associatedProyect) {
-		this.associatedProyect = associatedProyect;
-	}
+	
 
 	public String getCodigoQR() {
 		return this.codigoQR;
 	}
 
-	/**
-	 * 
-	 * @param codigoQR
-	 */
 	public void setCodigoQR(String codigoQR) {
 		this.codigoQR = codigoQR;
-	}
-
-	public int[][] getCordinates() {
-		return this.cordinates;
-	}
-
-	/**
-	 * 
-	 * @param cordinates
-	 */
-	public void setCordinates(int[][] cordinates) {
-		this.cordinates = cordinates;
 	}
 
 	public String getComment() {
 		return this.comment;
 	}
 
-	/**
-	 * 
-	 * @param comment
-	 */
+
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
+	public int x () {
+		return this.x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int y () {
+		return this.y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+	
 
 }

@@ -129,6 +129,19 @@ public class Main {
 		1. register proyect
 		2. modify proyect
 		3. remove proyect
+		4. register evidence
+		5. modify evidence
+		6. remove evidence
+		7. register point of interest
+		8. modify point of interest
+		9. remove point of interest
+		10. test cases user
+		11. test cases proyect
+		12. test cases review
+		13. info pilar and asociated proyects
+		14. info proyect and evidences and type review type evidence
+		15. emulate access users types
+
 		""");
 		int proyectOp;
 
@@ -145,7 +158,19 @@ public class Main {
 			case 1 -> registerProyect();
 			case 2 -> modifyProject();
 			case 3 -> removeProyect();
-
+			case 4 -> registerEvidence();
+			case 5 -> modifyEvidence();
+			case 6 -> rmEvidence();
+			case 7 -> registerPointInterest();
+			case 8 -> modifyPointInterest();
+			case 9 -> removePointInterest();
+			case 10 -> testcasesUser();
+			case 11 -> testcasesProyect();
+			case 12 -> testcasesReview();
+			case 13 -> infoPilarandAsociatedProyects();
+			case 14 -> infoProyectandEvidencesandTypeReviewTypeEvidence();
+			case 15 -> emulateAccessUsersTypes();
+			
 			default -> {
 				System.out.println("Invalid");
 			}
@@ -197,31 +222,144 @@ public class Main {
     }
 
 	public void modifyProject() {
+		int photoCreationYear;
+		int photoCreationMonth;
+		int photoCreationDay;
 
+		System.out.println("Enter researcher name");
+		String researchername = scan.next();
+		System.out.println("Enter pilar type");
+		String pilarType = scan.next();
+		System.out.println("Enter new proyect status");
+		String newproyectStatus = scan.next();
+		System.out.println("Enter new proyect name");
+		String newproyectName = scan.next();
+		System.out.println("Enter new proyect identifier");
+		String newproyectIdentifier = scan.next();
+		System.out.println("Enter new proyect description");
+		String newproyectDescription = scan.next();
+		System.out.println("Enter new initial date year");
+		photoCreationYear = scan.nextInt();
+		System.out.println("Enter new initial date month");
+		photoCreationMonth = scan.nextInt();
+		System.out.println("Enter new initial date day");
+		photoCreationDay = scan.nextInt();
 
-
+		Calendar newinitialDate = Calendar.getInstance();
+		newinitialDate.set(photoCreationYear, photoCreationMonth - 1, photoCreationDay);
 		
-		
+		System.out.println("Enter new end date year");
+		photoCreationYear = scan.nextInt();
+		System.out.println("Enter new end date month");
+		photoCreationMonth = scan.nextInt();
+		System.out.println("Enter new end date day");
+		photoCreationDay = scan.nextInt();
+
+		Calendar newendDate = Calendar.getInstance();
+		newendDate.set(photoCreationYear, photoCreationMonth - 1, photoCreationDay);
+
+		controller.modifyProyect(researchername, pilarType, newproyectStatus, newproyectName, newproyectIdentifier, newproyectDescription, newinitialDate, newendDate);
+
 	}
 
 	public void removeProyect() {
+		System.out.println("Enter proyect name");
+		String proyectName = scan.next();
+		System.out.println("Enter proyect identifier");
+		String proyectIdentifier = scan.next();
+		controller.removeProyect(proyectName, proyectIdentifier);
 		
 	}
 
 	public void registerEvidence() {
+		int photoCreationYear;
+		int photoCreationMonth;
+		int photoCreationDay;
+
+		System.out.println("Enter evidence name");
+		String evidenceName = scan.next();
+		System.out.println("Enter evidence description");
+		String evidenceDescription = scan.next();
+		System.out.println("Enter file URL");
+		String fileURL = scan.next();
+		System.out.println("Enter related proyect");
+		String relatedProject = scan.next();
+		System.out.println("Enter associated point of interest");
+		String associatedPointInterest = scan.next();
+		System.out.println("Enter registration date year");
+		photoCreationYear = scan.nextInt();
+		System.out.println("Enter registration date month");
+		photoCreationMonth = scan.nextInt();
+		System.out.println("Enter registration date day");
+		photoCreationDay = scan.nextInt();
+			
+
+		Calendar registrationDate = Calendar.getInstance();
+		registrationDate.set(photoCreationYear, photoCreationMonth - 1, photoCreationDay);
+
+		controller.registerEvidence(evidenceName, evidenceDescription, fileURL, relatedProject, associatedPointInterest, registrationDate);
+
 		
 	}
 
 	public void modifyEvidence() {
+		int photoCreationYear;
+		int photoCreationMonth;
+		int photoCreationDay;
+
+		System.out.println("Enter evidence name");
+		String evidenceName = scan.next();
+		System.out.println("Enter evidence description");
+		String evidenceDescription = scan.next();
+		System.out.println("Enter file URL");
+		String fileURL = scan.next();
+		System.out.println("Enter related proyect");
+		String relatedProject = scan.next();
+		System.out.println("Enter associated point of interest");
+		String associatedPointInterest = scan.next();
+		System.out.println("Enter registration date year");
+		photoCreationYear = scan.nextInt();
+		System.out.println("Enter registration date month");
+		photoCreationMonth = scan.nextInt();
+		System.out.println("Enter registration date day");
+		photoCreationDay = scan.nextInt();
+			
+
+		Calendar registrationDate = Calendar.getInstance();
+		registrationDate.set(photoCreationYear, photoCreationMonth - 1, photoCreationDay);
+
+		controller.modifyEvidence(evidenceName, evidenceDescription, fileURL, relatedProject, associatedPointInterest, registrationDate);
+
+
 		
 	}
 
 	public void rmEvidence() {
+
+		System.out.println("Enter evidence name");
+		String evidenceName = scan.next();
+		System.out.println("Enter related proyect");
+		String relatedProject = scan.next();
+		controller.rmEvidence(evidenceName, relatedProject);
 		
 	}
 
 	public void registerPointInterest() {
-		
+
+		System.out.println("Enter point of interest name");
+		String pointInterestName = scan.next();
+		System.out.println("Enter associated evidence");
+		String associatedEvidence = scan.next();
+		System.out.println("Enter comment");
+		String comment = scan.next();
+		System.out.println("Enter QR code");
+		String codigoQR = scan.next();
+		System.out.println("Enter x coordinate");
+		int x = scan.nextInt();
+		System.out.println("Enter y coordinate");
+		int y = scan.nextInt();
+
+		controller.registerPointInterest(pointInterestName, associatedEvidence, comment, codigoQR, x, y);		
 	}
 
 	public void modifyPointInterest() {

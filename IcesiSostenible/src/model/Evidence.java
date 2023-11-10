@@ -1,4 +1,5 @@
 package model;
+import java.util.Calendar;
 
 public class Evidence {
     private String evidenceName;
@@ -6,10 +7,10 @@ public class Evidence {
     private String fileURL;
     private String relatedProject;
     private String associatedPointInterest;
-    private String registrationDate;
-    
+    private Calendar registrationDate;
+
     public Evidence(String evidenceName, String evidenceDescription, String fileURL, String relatedProject,
-            String associatedPointInterest, String registrationDate) {
+            String associatedPointInterest, Calendar registrationDate) {
         this.evidenceName = evidenceName;
         this.evidenceDescription = evidenceDescription;
         this.fileURL = fileURL;
@@ -47,12 +48,13 @@ public class Evidence {
     public void setAssociatedPointInterest(String associatedPointInterest) {
         this.associatedPointInterest = associatedPointInterest;
     }
-    public String getRegistrationDate() {
+    public Calendar getRegistrationDate() {
         return registrationDate;
     }
-    public void setRegistrationDate(String registrationDate) {
+    public void setRegistrationDate(Calendar registrationDate) {
         this.registrationDate = registrationDate;
     }
+    
 
     @Override
     public String toString() {

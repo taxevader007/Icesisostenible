@@ -58,52 +58,45 @@ public class Controller {
 
     public String modifyProyect(String researchername, String pilarType, String newproyectStatus, String newproyectName, String newproyectIdentifier, String newproyectDescription, Calendar newinitialDate, Calendar newendDate) {
 
-		
+		for (int i = 0; i < pilars.length; i++){
+			if (pilars[i].getProjects() != null){
+				for (Project p : pilars[i].getProjects()){
+					if (p.getProyectName().equalsIgnoreCase(newproyectName)){
+						p.setProyectStatus(newproyectStatus);
+						p.setProyectName(newproyectName);
+						p.setProyectIdentifier(newproyectIdentifier);
+						p.setProyectDescription(newproyectDescription);
+						p.setInitialDate(newinitialDate);
+						p.setEndDate(newendDate);
 
-			
-        
-		//public void editPlanet(String galaxyName, String planetName, String newPlanetName, int newNumberOfSatellites, double newPlanetRadius, double newPlanetMass) {
-        //for (int i = 0; i < galaxyCounter; i++) {
-          //  if (galaxyMemory[i] != null && galaxyMemory[i].getGalaxyName().equals(galaxyName)) {
-          //      Galaxy associatedGalaxy = galaxyMemory[i];
-    	//	
-    	//            for (int j = 0; j < associatedGalaxy.getGalaxyPlanets().length; j++) {
-          //          if (associatedGalaxy.getGalaxyPlanets()[j] != null && associatedGalaxy.getGalaxyPlanets()[j].getPlanetName().equals(planetName)) {
-        //                associatedGalaxy.getGalaxyPlanets()[j].setPlanetName(newPlanetName);
-          //              associatedGalaxy.getGalaxyPlanets()[j].setPlanetNumberSatelites(newNumberOfSatellites);
-            //            associatedGalaxy.getGalaxyPlanets()[j].setPlanetRadio(newPlanetRadius);
-          //              associatedGalaxy.getGalaxyPlanets()[j].setPlanetMass(newPlanetMass);
-            //            break;
-             //       }
-             //   }
-        //    }
-        //}
-    
+						return "Proyect modified successfully";
+					} 
+				}
+			}
+		}
 			
 
 		return "Proyect modified successfully";
 	}
 
-	public void removeProyect() {
-	//* public void rmPlanet( String galaxyName, String planetName) {
-    //    for (int i = 0; i < galaxyCounter; i++) {
-    //        if (galaxyMemory[i] != null && galaxyMemory[i].getGalaxyName().equals(galaxyName)) {
-    //            Galaxy associatedGalaxy = galaxyMemory[i];
-    //
-    //            for (int j = 0; j < associatedGalaxy.getGalaxyPlanets().length; j++) {
-    //                if (associatedGalaxy.getGalaxyPlanets()[j] != null && associatedGalaxy.getGalaxyPlanets()[j].getPlanetName().equals(planetName)) {
-    //                    associatedGalaxy.getGalaxyPlanets()[j] = null;
-    //                    break;
-    //                }
-    //            }
-    //       }
-    //    }
-    //}
-	// */	
-		
+	public String removeProyect(String proyectName, String proyectIdentifier) {
+
+		for (int i = 0; i < pilars.length; i++){
+			if (pilars[i].getProjects() != null){
+				for (Project p : pilars[i].getProjects()){
+					if (p.getProyectName().equalsIgnoreCase(proyectName) && p.getProyectIdentifier().equalsIgnoreCase(proyectIdentifier)){
+						p = null;
+
+						return "Proyect removed successfully";
+					} 
+				}
+			}
+		}
+
+		return "Proyect not removed";
 	}
 
-	public String registerEvidence(String evidenceName, String evidenceDescription, String fileURL, String relatedProject, String associatedPointInterest, String registrationDate) {
+	public String registerEvidence(String evidenceName, String evidenceDescription, String fileURL, String relatedProject, String associatedPointInterest, Calendar registrationDate) {
 
 		// Create the evidence object
 		Evidence evidence = new Evidence(evidenceName, evidenceDescription, fileURL, relatedProject, associatedPointInterest, registrationDate);
@@ -114,6 +107,7 @@ public class Controller {
 				for (Project p : pilars[i].getProjects()){
 					if (p.getProyectName().equalsIgnoreCase(relatedProject)){
 						//p.addEvidence(evidence);
+
 						return "Evidence registered successfully";
 					} 
 				}
@@ -123,24 +117,106 @@ public class Controller {
 		return "Cannot add evidence if not related to a project";
 	}
 
-	public void modifyEvidence() {
+	public String modifyEvidence(String evidenceName, String evidenceDescription, String fileURL, String relatedProject, String associatedPointInterest, Calendar registrationDate) {
+
+		for (int i = 0; i < pilars.length; i++){
+			if (pilars[i].getProjects() != null){
+				for (Project p : pilars[i].getProjects()){
+					if (p.getProyectName().equalsIgnoreCase(relatedProject)){
+
+
+						for (Evidence e : p.getEvidences()){
+							if (e.getEvidenceName().equalsIgnoreCase(evidenceName)){
+								e.setEvidenceDescription(evidenceDescription);
+								e.setFileURL(fileURL);
+								e.setRelatedProject(relatedProject);
+								e.setAssociatedPointInterest(associatedPointInterest);
+								e.setRegistrationDate(registrationDate);
+
+								return "Evidence modified successfully";
+							}
+						}
+					} 
+				}
+			}
+		}
+
+		return "Evidence not modified";
+
 		
 	}
+	// 9. Remove evidence
+	public String rmEvidence(String evidenceName, String relatedProject) {
 
-	public void rmEvidence() {
+		for (int i = 0; i < pilars.length; i++){
+			if (pilars[i].getProjects() != null){
+				for (Project p : pilars[i].getProjects()){
+					if (p.getProyectName().equalsIgnoreCase(relatedProject)){
+
+						for (Evidence e : p.getEvidences()){
+							if (e.getEvidenceName().equalsIgnoreCase(evidenceName)){
+								e = null;
+
+								return "Evidence removed successfully";
+							}
+						}
+					} 
+				}
+			}
+		}
 		
+
+
+		return "Evidence removed successfully";
 	}
 
-	public void registerPointInterest() {
-		
+	public String registerPointInterest(String pointInterestName, String associatedEvidence, String comment,String codigoQR, int x, int y) {
+
+		for (int i = 0; i < pilars.length; i++){
+			if (pilars[i].getProjects() != null){
+				for (Project p : pilars[i].getProjects()){
+
+					if (p.getProyectName().equalsIgnoreCase(associatedEvidence)){
+						PointInterest pointInterest = new PointInterest(pointInterestName, associatedEvidence, comment, codigoQR, x, y);
+						p.addPointInterest(pointInterest);
+
+						return "Point of interest registered successfully";
+					}
+				}
+			}
+		}
+
+
+			
+		return "Point of interest not";
 	}
 
-	public void modifyPointInterest() {
-		
-	}
+	public String modifyPointInterest() {
 
-	public void removePointInterest() {
 		
+
+			return "Point of interest not modified";
+		}
+
+	//12. Remove point of interest
+	public String removePointInterest(String pointInterestName) {
+
+		for (int i = 0; i < pilars.length; i++){
+			if (pilars[i].getProjects() != null){
+				for (Project p : pilars[i].getProjects()){
+
+					for (PointInterest pi : p.getPointInterests()){
+						if (pi.getPointInterestName().equalsIgnoreCase(pointInterestName)){
+							pi = null;
+
+							return "Point of interest removed successfully";
+						}
+					}
+				}
+			}
+		}
+		
+		return "point of interest was not removed";
 	}
 
 	public void testcasesUser() {
