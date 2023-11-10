@@ -8,9 +8,6 @@ import java.util.ArrayList;
 public class Controller {
     private ArrayList<User> users;
     private Pilar [] pilars;
-    
-
-
 
     public Controller() {
         this.pilars = new Pilar [] {new Pilar(PilarType.BIODIVERSITY), new Pilar(PilarType.WATER), new Pilar(PilarType.TRASHCOLLECTOR), new Pilar(PilarType.ENERGY)};
@@ -106,10 +103,24 @@ public class Controller {
 		
 	}
 
-	public void registerEvidence() {
+	public String registerEvidence(String evidenceName, String evidenceDescription, String fileURL, String relatedProject, String associatedPointInterest, String registrationDate) {
 
+		// Create the evidence object
+		Evidence evidence = new Evidence(evidenceName, evidenceDescription, fileURL, relatedProject, associatedPointInterest, registrationDate);
 
-		
+		// Find the project with the matching name and add the evidence to it
+		for(int i = 0; i < pilars.length; i++){
+			if (pilars[i].getProjects() != null){
+				for (Project p : pilars[i].getProjects()){
+					if (p.getProyectName().equalsIgnoreCase(relatedProject)){
+						//p.addEvidence(evidence);
+						return "Evidence registered successfully";
+					} 
+				}
+			}
+		}
+		// If no project was found, return an error message
+		return "Cannot add evidence if not related to a project";
 	}
 
 	public void modifyEvidence() {
