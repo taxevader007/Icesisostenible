@@ -5,7 +5,6 @@ import java.util.InputMismatchException;
 import java.util.Calendar;
 import java.util.Scanner;
 
-
 public class Main {
 	private final static Scanner scan = new Scanner(System.in);
 	private final Controller controller;
@@ -51,11 +50,16 @@ public class Main {
 
 	public void executeOption(int op) {
         switch (op) {
-            case 0 -> {
-                System.out.println("bye");
-            }
+            case 0 -> System.out.println("bye");
             case 1 -> registerUser();
 			case 2 -> manageProyects();
+			case 3 -> manageEvidences();
+			case 4 -> managePointInterest();
+			// case 5 -> testcasesUser();
+			case 6 -> infoPilarandAsociatedProyects();
+			case 7 -> infoProyectandEvidencesandTypeReviewTypeEvidence();
+			// case 8 -> emulateAccessUsersTypes();
+
             default -> {
                 System.out.println("Invalid");
             }
@@ -126,22 +130,10 @@ public class Main {
 
 	public void manageProyects() {
 		System.out.println("""
+		enter proyect option
 		1. register proyect
 		2. modify proyect
 		3. remove proyect
-		4. register evidence
-		5. modify evidence
-		6. remove evidence
-		7. register point of interest
-		8. modify point of interest
-		9. remove point of interest
-		10. test cases user
-		11. test cases proyect
-		12. test cases review
-		13. info pilar and asociated proyects
-		14. info proyect and evidences and type review type evidence
-		15. emulate access users types
-
 		""");
 		int proyectOp;
 
@@ -157,19 +149,7 @@ public class Main {
 		switch (proyectOp) {
 			case 1 -> registerProyect();
 			case 2 -> modifyProject();
-			case 3 -> removeProyect();
-			case 4 -> registerEvidence();
-			case 5 -> modifyEvidence();
-			case 6 -> rmEvidence();
-			case 7 -> registerPointInterest();
-			case 8 -> modifyPointInterest();
-			case 9 -> removePointInterest();
-			case 10 -> testcasesUser();
-			case 11 -> testcasesProyect();
-			case 12 -> testcasesReview();
-			case 13 -> infoPilarandAsociatedProyects();
-			case 14 -> infoProyectandEvidencesandTypeReviewTypeEvidence();
-			case 15 -> emulateAccessUsersTypes();
+			case 3 -> removeProyect();			
 			
 			default -> {
 				System.out.println("Invalid");
@@ -186,7 +166,7 @@ public class Main {
 
 		System.out.println("Enter researcher name");
 		String researchername = scan.next();
-		System.out.println("Enter pilar type");
+		System.out.println("Enter pilar type: BIODIVERSITY, WATER, TRASHCOLLECTOR, ENERGY");
 		String pilarType = scan.next();
 		System.out.println("Enter proyect status");
 		String proyectStatus = scan.next();
@@ -228,7 +208,7 @@ public class Main {
 
 		System.out.println("Enter researcher name");
 		String researchername = scan.next();
-		System.out.println("Enter pilar type");
+		System.out.println("Enter pilar type: BIODIVERSITY, WATER, TRASHCOLLECTOR, ENERGY");
 		String pilarType = scan.next();
 		System.out.println("Enter new proyect status");
 		String newproyectStatus = scan.next();
@@ -270,6 +250,35 @@ public class Main {
 		controller.removeProyect(proyectName, proyectIdentifier);
 		
 	}
+
+	public void manageEvidences() {
+		System.out.println("""
+		enter evidence option
+		1. register evidence
+		2. modify evidence
+		3. remove evidence
+		""");
+		int evidenceOp;
+
+		try {
+            evidenceOp = scan.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+            scan.next();
+            return;
+        }
+
+		switch (evidenceOp) {
+			case 1 -> registerEvidence();
+				case 2 -> modifyEvidence();
+				case 3 -> rmEvidence();
+				default -> {
+					System.out.println("Invalid");
+				}
+			}
+			
+		
+		}
 
 	public void registerEvidence() {
 		int photoCreationYear;
@@ -344,6 +353,35 @@ public class Main {
 		
 	}
 
+	public void managePointInterest(){
+		System.out.println("""
+		enter point of interest option
+		1. register point of interest
+		2. modify point of interest
+		3. remove point of interest
+		""");
+		int pointInterestOp;
+
+		try {
+			pointInterestOp = scan.nextInt();
+		} catch (InputMismatchException e) {
+			System.out.println("Invalid input. Please enter a valid integer.");
+			scan.next();
+			return;
+		}
+
+		switch (pointInterestOp) {
+			case 1 -> registerPointInterest();
+			case 2 -> modifyPointInterest();
+			case 3 -> removePointInterest();
+			default -> {
+				System.out.println("Invalid");
+			}
+		}
+
+	}
+
+
 	public void registerPointInterest() {
 
 		System.out.println("Enter point of interest name");
@@ -362,12 +400,32 @@ public class Main {
 		controller.registerPointInterest(pointInterestName, associatedEvidence, comment, codigoQR, x, y);		
 	}
 
+	
+
 	public void modifyPointInterest() {
+
+		System.out.println("Enter point of interest name");
+		String pointInterestName = scan.next();
+		System.out.println("Enter associated evidence");
+		String associatedEvidence = scan.next();
+		System.out.println("Enter comment");
+		String comment = scan.next();
+		System.out.println("Enter QR code");
+		String codigoQR = scan.next();
+		System.out.println("Enter x coordinate");
+		int x = scan.nextInt();
+		System.out.println("Enter y coordinate");
+		int y = scan.nextInt();
+
+		controller.modifyPointInterest(pointInterestName, associatedEvidence, comment, codigoQR, x, y);
 		
 	}
 
 	public void removePointInterest() {
-		
+		System.out.println("Enter point of interest name");
+		String pointInterestName = scan.next();
+		controller.removePointInterest(pointInterestName);
+
 	}
 
 	public void testcasesUser() {
@@ -383,11 +441,26 @@ public class Main {
 	}
 
 	public void infoPilarandAsociatedProyects() {
+		System.out.println("""
+			Enter pilar type
+			BIODIVERSITY,
+			WATER,
+			TRASHCOLLECTOR,
+			ENERGY""");
+		String pilarType = scan.next();
+
+		controller.infoPilarandAsociatedProyects(pilarType);
 		
 	}
 
 	public void infoProyectandEvidencesandTypeReviewTypeEvidence() {
-		
+		System.out.println("Enter proyect name");
+		String proyectName = scan.next();
+		System.out.println("Enter proyect identifier");
+		String proyectIdentifier = scan.next();
+
+		controller.infoProyectandEvidencesandTypeReviewTypeEvidence(proyectName, proyectIdentifier);
+
 	}
 
 	public void emulateAccessUsersTypes() {

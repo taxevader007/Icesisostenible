@@ -98,15 +98,12 @@ public class Controller {
 
 	public String registerEvidence(String evidenceName, String evidenceDescription, String fileURL, String relatedProject, String associatedPointInterest, Calendar registrationDate) {
 
-		// Create the evidence object
-		Evidence evidence = new Evidence(evidenceName, evidenceDescription, fileURL, relatedProject, associatedPointInterest, registrationDate);
-
 		// Find the project with the matching name and add the evidence to it
 		for(int i = 0; i < pilars.length; i++){
 			if (pilars[i].getProjects() != null){
 				for (Project p : pilars[i].getProjects()){
 					if (p.getProyectName().equalsIgnoreCase(relatedProject)){
-						//p.addEvidence(evidence);
+						p.addEvidence(evidenceName, evidenceDescription, fileURL, relatedProject, associatedPointInterest, registrationDate);
 
 						return "Evidence registered successfully";
 					} 
@@ -191,15 +188,7 @@ public class Controller {
 		return "Point of interest not";
 	}
 
-	public String modifyPointInterest() {
-
-		
-
-			return "Point of interest not modified";
-		}
-
-	//12. Remove point of interest
-	public String removePointInterest(String pointInterestName) {
+	public String modifyPointInterest(String pointInterestName, String associatedEvidence, String comment, String codigoQR, int x, int y) {
 
 		for (int i = 0; i < pilars.length; i++){
 			if (pilars[i].getProjects() != null){
@@ -207,22 +196,49 @@ public class Controller {
 
 					for (PointInterest pi : p.getPointInterests()){
 						if (pi.getPointInterestName().equalsIgnoreCase(pointInterestName)){
-							pi = null;
+							pi.setAssociatedEvidence(associatedEvidence);
+							pi.setComment(comment);
+							pi.setCodigoQR(codigoQR);
+							pi.setX(x);
+							pi.setY(y);
 
-							return "Point of interest removed successfully";
+							return "Point of interest modified successfully";
+						}
+					}
+
+				}
+				return "There is no point of interest with that name";
+				}
+			}
+	
+			return "Point of interest not modified";
+		}
+	
+		//12. Remove point of interest
+		public String removePointInterest(String pointInterestName) {
+	
+			for (int i = 0; i < pilars.length; i++){
+				if (pilars[i].getProjects() != null){
+					for (Project p : pilars[i].getProjects()){
+	
+						for (PointInterest pi : p.getPointInterests()){
+							if (pi.getPointInterestName().equalsIgnoreCase(pointInterestName)){
+								pi = null;
+	
+								return "Point of interest removed successfully";
+							}
 						}
 					}
 				}
 			}
+			
+			return "point of interest was not removed";
 		}
-		
-		return "point of interest was not removed";
-	}
-
-	public void testcasesUser() {
-		
-	}
-
+	
+		public void testcasesUser() {
+			
+		}
+	
 	public void testcasesProyect() {
 		
 	}
@@ -231,12 +247,43 @@ public class Controller {
 		
 	}
 
-	public void infoPilarandAsociatedProyects() {
+	public String infoPilarandAsociatedProyects(String pilarType) {
+		//Consultar la información detallada de un pilar y el listado de proyectos asociados.
 		
+		for (int i = 0; i < pilars.length; i++){
+			if (pilars[i].getPilarType().toString().equalsIgnoreCase(pilarType)){
+				return pilars[i].toString();
+			}
+			if (pilars[i].getProjects() != null){
+				for (Project p : pilars[i].getProjects()){
+					if (p.getPilarType().toString().equalsIgnoreCase(pilarType)){
+						return p.toString();
+					}
+				}
+			}
+		}
+		
+
+		return "the pilar do not have proyects";
 	}
 
-	public void infoProyectandEvidencesandTypeReviewTypeEvidence() {
+	public String infoProyectandEvidencesandTypeReviewTypeEvidence(String proyectName, String proyectIdentifier) {
+		//Consultar la información detallada de un proyecto, cantidad de evidencias de tipo reseña y cantidad de evidencias de otro tipo.
 		
+		for (int i = 0; i < pilars.length; i++){
+			if (pilars[i].getProjects() != null){
+				for (Project p : pilars[i].getProjects()){
+					if (p.getProyectName().equalsIgnoreCase(proyectName) && p.getProyectIdentifier().equalsIgnoreCase(proyectIdentifier)){
+					
+						return p.toString() + p.getEvidences().toString() + p.getEvidences().length; //+ p.getreviews().toString() + p.getreviews().length;
+					}
+				}
+			}
+		}
+
+
+
+		return "the proyect do not have evidences";
 	}
 
 	public void emulateAccessUsersTypes() {

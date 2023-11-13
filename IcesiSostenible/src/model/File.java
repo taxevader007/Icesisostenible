@@ -19,6 +19,11 @@ public class File extends Evidence {
 	public void setUrl(int url) {
 		Url = url;
 	}
+
+	@Override
+	public String toString() {
+		return "File [Url=" + Url + "]";
+	}
 	
 
 }

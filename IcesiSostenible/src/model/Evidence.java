@@ -18,6 +18,12 @@ public class Evidence {
         this.associatedPointInterest = associatedPointInterest;
         this.registrationDate = registrationDate;
     }
+
+    public void registerEvidence(String evidenceName, String evidenceDescription, String fileURL, String relatedProject,
+            String associatedPointInterest, String registrationDate) {
+        
+    }
+
     public String getEvidenceName() {
         return evidenceName;
     }
@@ -54,13 +60,15 @@ public class Evidence {
     public void setRegistrationDate(Calendar registrationDate) {
         this.registrationDate = registrationDate;
     }
-    
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        return "Evidence [evidenceName=" + evidenceName + ", evidenceDescription=" + evidenceDescription + ", fileURL="
+                + fileURL + ", relatedProject=" + relatedProject + ", associatedPointInterest="
+                + associatedPointInterest + ", registrationDate=" + registrationDate + "]";
     }
+    
+
 
 
 }

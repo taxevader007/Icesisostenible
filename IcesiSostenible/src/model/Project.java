@@ -1,4 +1,5 @@
 package model;
+
 import java.util.Calendar;
 
 public class Project {
@@ -25,6 +26,10 @@ public class Project {
 		
 	}
 
+	public void addEvidence(String evidenceName, String evidenceDescription, String evidenceType, String evidenceLocation, String evidenceDate, String evidenceTime, String evidenceResearcherName, String evidencePilarType, String evidenceProyectName, String evidenceProyectIdentifier, String evidenceProyectDescription, String evidenceProyectInitialDate, String evidenceProyectEndDate) {
+		
+	}
+	
 	public void registerProyect(String researchername, String pilarType, String proyectStatus, String proyectName, String proyectIdentifier, String proyectDescription, String initialDate, String endDate) {
 		
 	}
@@ -115,6 +120,18 @@ public class Project {
     public PointInterest[] getPointInterests() {
         return null;
     }
+
+	@Override
+	public String toString() {
+		return "Project [researchername=" + researchername + ", pilarType=" + pilarType + ", proyectStatus="
+				+ proyectStatus + ", proyectName=" + proyectName + ", proyectIdentifier=" + proyectIdentifier
+				+ ", proyectDescription=" + proyectDescription + ", initialDate=" + initialDate + ", endDate=" + endDate
+				+ "]";
+	}
+
+	public void addEvidence(String evidenceName, String evidenceDescription, String fileURL, String relatedProject,
+			String associatedPointInterest, Calendar registrationDate) {
+	}
 
 
 	

@@ -70,6 +70,12 @@ public class PointInterest {
 	public void setY(int y) {
 		this.y = y;
 	}
+
+	@Override
+	public String toString() {
+		return "PointInterest [pointInterestName=" + pointInterestName + ", associatedEvidence=" + associatedEvidence
+				+ ", comment=" + comment + ", codigoQR=" + codigoQR + ", x=" + x + ", y=" + y + "]";
+	}
 	
 
 }
