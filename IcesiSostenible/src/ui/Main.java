@@ -1,3 +1,7 @@
+/**
+ * The Main class in the UI package is responsible for handling user input and executing the
+ * corresponding actions in the Controller class.
+ */
 package ui;
 
 import model.Controller;
@@ -5,6 +9,10 @@ import java.util.InputMismatchException;
 import java.util.Calendar;
 import java.util.Scanner;
 
+/**
+ * The Main class is a Java class that initializes a Controller object and provides a Scanner object
+ * for user input.
+ */
 public class Main {
 	private final static Scanner scan = new Scanner(System.in);
 	private final Controller controller;
@@ -14,6 +22,10 @@ public class Main {
 	}
 
 
+	/**
+	 * The main function runs a menu-driven program that repeatedly displays a menu, prompts the user for
+	 * an option, and executes the selected option until the user chooses to exit.
+	 */
 	public static void main(String[] args) {
         Main m = new Main();
         int op = -1;
@@ -32,6 +44,10 @@ public class Main {
 
 
 
+	// The above code is defining a method called "menu" in Java. This method is responsible for printing
+	// out a menu with several options for the user to choose from. Each option is numbered and has a
+	// corresponding action associated with it. The menu is displayed using a multi-line string (also
+	// known as a text block) introduced in Java 15.
 	public void menu() {
         System.out.println("""
 			MENU
@@ -48,6 +64,8 @@ public class Main {
 
     }
 
+	// The above code is defining a method called `executeOption` that takes an integer parameter `op`. It
+	// uses a switch statement to perform different actions based on the value of `op`.
 	public void executeOption(int op) {
         switch (op) {
             case 0 -> System.out.println("bye");
@@ -55,10 +73,10 @@ public class Main {
 			case 2 -> manageProyects();
 			case 3 -> manageEvidences();
 			case 4 -> managePointInterest();
-			// case 5 -> testcasesUser();
+			case 5 -> testcasesUser();
 			case 6 -> infoPilarandAsociatedProyects();
 			case 7 -> infoProyectandEvidencesandTypeReviewTypeEvidence();
-			// case 8 -> emulateAccessUsersTypes();
+			case 8 -> emulateAccessUsersTypes();
 
             default -> {
                 System.out.println("Invalid");
@@ -67,6 +85,7 @@ public class Main {
 
     }
 
+	// The above code is defining a method called `registerUser()` in Java.
 	public void registerUser () {
 		System.out.println("""
 		enter user type
@@ -89,6 +108,9 @@ public class Main {
 		
 	}
 
+	// The above code is defining a method called "registerVisitants" in Java. Inside the method, it
+	// prompts the user to enter a username and password, and then calls a method called
+	// "registerVisitants" on a controller object, passing in the username and password as arguments.
 	public void registerVisitants() {
 		System.out.println("Enter username");
 		String userName = scan.next();
@@ -97,6 +119,11 @@ public class Main {
 		controller.registerVisitants(userName, password);
 	}
 
+	// The above code is defining a method called "registerInfoCollector" in a Java class. Inside the
+	// method, it prompts the user to enter a username, password, name, email, and phone number. It then
+	// reads the user input for each of these values using a Scanner object called "scan". Finally, it
+	// calls a method called "registerInfoCollector" on an object called "controller" passing in the user
+	// input values as arguments.
 	public void registerInfoCollector() {
 		System.out.println("Enter username");
 		String userName = scan.next();
@@ -113,6 +140,9 @@ public class Main {
 		
 	}
 
+	// The above code is defining a method called "registerResearcher" in Java. This method prompts the
+	// user to enter a username, password, name, email, and phone number. It then calls a
+	// "registerResearcher" method on a "controller" object, passing in the entered values as arguments.
 	public void registerResearcher() {
 		System.out.println("Enter username");
 		String userName = scan.next();
@@ -128,6 +158,7 @@ public class Main {
 		
 	}
 
+	// The above code is defining a method called `manageProyects()` in Java.
 	public void manageProyects() {
 		System.out.println("""
 		enter proyect option
@@ -159,6 +190,12 @@ public class Main {
 	}
 
 
+	// The above code is defining a method called "registerProyect()" in Java. This method prompts the
+	// user to enter various details related to a project, such as researcher name, project type, project
+	// status, project name, project identifier, project description, initial date, and end date. It then
+	// creates instances of the Calendar class to store the initial and end dates. Finally, it calls a
+	// method called "registerProyect()" on a controller object, passing in all the entered details as
+	// arguments.
 	public void registerProyect() {
 		int photoCreationYear;
 		int photoCreationMonth;
@@ -201,6 +238,7 @@ public class Main {
 	
     }
 
+	// The above code is defining a method called `modifyProject()` in Java.
 	public void modifyProject() {
 		int photoCreationYear;
 		int photoCreationMonth;
@@ -242,6 +280,7 @@ public class Main {
 
 	}
 
+	// The above code is defining a method called "removeProyect" in a Java class.
 	public void removeProyect() {
 		System.out.println("Enter proyect name");
 		String proyectName = scan.next();
@@ -251,6 +290,7 @@ public class Main {
 		
 	}
 
+	// The above code is defining a method called `manageEvidences()`.
 	public void manageEvidences() {
 		System.out.println("""
 		enter evidence option
@@ -280,6 +320,11 @@ public class Main {
 		
 		}
 
+	// The above code is defining a method called "registerEvidence" in Java. This method prompts the user
+	// to enter various details about an evidence, such as its name, description, file URL, related
+	// project, associated point of interest, and registration date. It then creates a Calendar object
+	// with the provided registration date and calls a "registerEvidence" method on a "controller" object,
+	// passing in all the entered details.
 	public void registerEvidence() {
 		int photoCreationYear;
 		int photoCreationMonth;
@@ -311,6 +356,12 @@ public class Main {
 		
 	}
 
+	// The above code is defining a method called "modifyEvidence" in a Java class. Inside the method, it
+	// prompts the user to enter various details related to an evidence, such as evidence name,
+	// description, file URL, related project, associated point of interest, and registration date. It
+	// then reads the user input and assigns the values to respective variables. Finally, it creates a
+	// Calendar object with the registration date and calls a method called "modifyEvidence" on a
+	// controller object, passing the entered details as arguments.
 	public void modifyEvidence() {
 		int photoCreationYear;
 		int photoCreationMonth;
@@ -343,6 +394,10 @@ public class Main {
 		
 	}
 
+	// The above code is defining a method called "rmEvidence" in a Java class. Inside the method, it
+	// prompts the user to enter the name of an evidence and the related project. It then calls a method
+	// called "rmEvidence" on a controller object, passing the evidence name and related project as
+	// arguments.
 	public void rmEvidence() {
 
 		System.out.println("Enter evidence name");
@@ -353,6 +408,7 @@ public class Main {
 		
 	}
 
+	// The above code is implementing a method called `managePointInterest()` in Java.
 	public void managePointInterest(){
 		System.out.println("""
 		enter point of interest option
@@ -382,6 +438,10 @@ public class Main {
 	}
 
 
+	// The above code is defining a method called "registerPointInterest" in Java. This method prompts the
+	// user to enter various details such as the point of interest name, associated evidence, comment, QR
+	// code, x and y coordinates. It then calls a method called "registerPointInterest" on a controller
+	// object, passing in the entered values as arguments.
 	public void registerPointInterest() {
 
 		System.out.println("Enter point of interest name");
@@ -402,6 +462,10 @@ public class Main {
 
 	
 
+	// The above code is defining a method called `modifyPointInterest()`. Inside the method, it prompts
+	// the user to enter various details such as the point of interest name, associated evidence, comment,
+	// QR code, x and y coordinates. It then calls a `modifyPointInterest()` method on a `controller`
+	// object, passing in the entered values as arguments.
 	public void modifyPointInterest() {
 
 		System.out.println("Enter point of interest name");
@@ -421,25 +485,36 @@ public class Main {
 		
 	}
 
+	// The above code is defining a method called "removePointInterest" in a Java class.
 	public void removePointInterest() {
 		System.out.println("Enter point of interest name");
 		String pointInterestName = scan.next();
-		controller.removePointInterest(pointInterestName);
+		System.out.println("Enter x coordinate");
+		int x = scan.nextInt();
+		System.out.println("Enter y coordinate");
+		int y = scan.nextInt();
+		controller.removePointInterest(pointInterestName, x, y);
 
 	}
 
+	// The above code is calling a method called "testcasesUser" on an object called "controller".
 	public void testcasesUser() {
-		
+		controller.testcasesUser();
 	}
+// The above code is defining two methods: "testcasesProyect()" and "testcasesReview()". These methods
+// are calling methods from a "controller" object, which is assumed to be an instance of a class. The
+// purpose of these methods is not clear from the code provided.
 
 	public void testcasesProyect() {
-		
+		controller.testcasesProyect();
 	}
 
+	// The above code is calling the method "testcasesReview()" on an object named "controller".
 	public void testcasesReview() {
-		
+		controller.testcasesReview();
 	}
 
+	// The above code is defining a method called "infoPilarandAsociatedProyects" in Java.
 	public void infoPilarandAsociatedProyects() {
 		System.out.println("""
 			Enter pilar type
@@ -449,22 +524,31 @@ public class Main {
 			ENERGY""");
 		String pilarType = scan.next();
 
-		controller.infoPilarandAsociatedProyects(pilarType);
+		String result = controller.infoPilarandAsociatedProyects(pilarType);
+		System.out.println(result);
 		
 	}
-
+	//matriz de evidencias
+	// The above code is defining a method called "infoProyectandEvidencesandTypeReviewTypeEvidence" in
+	// Java. Inside the method, it prompts the user to enter a project name and project identifier. It
+	// then calls a method called "controller.infoProyectandEvidencesandTypeReviewTypeEvidence" with the
+	// project name and project identifier as arguments, and prints the result of that method call.
 	public void infoProyectandEvidencesandTypeReviewTypeEvidence() {
 		System.out.println("Enter proyect name");
 		String proyectName = scan.next();
 		System.out.println("Enter proyect identifier");
 		String proyectIdentifier = scan.next();
 
-		controller.infoProyectandEvidencesandTypeReviewTypeEvidence(proyectName, proyectIdentifier);
+		System.out.println(controller.infoProyectandEvidencesandTypeReviewTypeEvidence(proyectName, proyectIdentifier));
 
 	}
 
+	// The above code is calling a method called "emulateAccessUsersTypes" on an object called
+	// "controller".
 	public void emulateAccessUsersTypes() {
 		
+		controller.emulateAccessUsersTypes();
+		//XD
 	}
 
 }
