@@ -597,27 +597,8 @@ public class Main {
 					String password = scan.next();
 					if (controller.identifyVisitant(userName, password)) {
 						System.out.println("welcome to sustainability Icesi  areas");
-
-						System.out.println("""
-						Enter option
-
-						1. See map and register a review to a evidence
-						2. consult a evidence/point of interest to a position in the map
-						3. Register a review to a evidence and comments
-
-								""");
-						int optionVisitant = scan.nextInt();
+						userVisitantOp();
 						
-						switch (optionVisitant) {
-							case 1 -> seeMap();
-							case 2 -> positionMapConsult();
-							case 3 -> registerPointInterest(); 
-							default -> {
-								System.out.println("Invalid input, try again");
-								emulateAccessUsersTypes();
-							}
-						}
-					
 
 
 					} else {
@@ -632,32 +613,7 @@ public class Main {
 					if (controller.identifyInformationCollector(userName, password)) {
 						System.out.println("welcome to sustainability Icesi  areas");
 
-						
-						System.out.println("""
-						Enter option
-
-						1. register a review as evidence to a proyect
-
-						2. See map and register a review to a evidence
-						3. consult a evidence/point of interest to a position in the map 
-						4. Register a review to a evidence and comments
-
-								""");
-						int optionInformationCollector = scan.nextInt();
-						
-						switch (optionInformationCollector) {
-							case 1 -> registerEvidence();
-
-							case 2 -> seeMap();
-							case 3 -> positionMapConsult();
-							case 4 -> registerPointInterest(); 
-							default -> {
-								System.out.println("Invalid input, try again");
-								emulateAccessUsersTypes();
-							}
-						}
-					
-
+						userInformationCollectorOp();
 
 
 					} else {
@@ -671,47 +627,7 @@ public class Main {
 					if (controller.identifyResearcher(userName, password)) {
 						System.out.println("welcome to sustainability Icesi  areas");
 
-						System.out.println("""
-						Enter option
-
-						1. consult project info and their evidences
-						2. register project
-						3. modify project
-
-						4. register evidence
-						5. modify evidence
-			
-						6. register point of interest
-						7. modify point of interest
-
-						8. register a review as evidence to a proyect
-
-						9. See map and register a review to a evidence
-						10. consult a evidence/point of interest to a position in the map
-						11. Register a review to a evidence and comments
-
-								""");
-
-						int optionResearcher = scan.nextInt();
-
-						switch (optionResearcher) {
-							case 1 -> infoPilarandAsociatedProyects();
-							case 2 -> registerProyect();
-							case 3 -> modifyProject();
-							case 4 -> registerEvidence();
-							case 5 -> modifyEvidence();
-							case 6 -> registerPointInterest();
-							case 7 -> modifyPointInterest();
-							case 8 -> registerEvidence();
-							case 9 -> seeMap();
-							case 10 -> positionMapConsult();
-							case 11 -> registerPointInterest(); 
-							default -> {
-								System.out.println("Invalid input, try again");
-								emulateAccessUsersTypes();
-							}
-						}
-
+						userResearcherOp();
 
 					} else {
 						System.out.println("The password is incorrect");
@@ -728,6 +644,103 @@ public class Main {
 		
 		controller.emulateAccessUsersTypes();
 		//XD
+	}
+
+	public void userVisitantOp(){
+
+	System.out.println("""
+	Enter option
+
+	1. See map and register a review to a evidence
+	2. consult a evidence/point of interest to a position in the map
+	3. Register a review to a evidence and comments
+
+			""");
+	int optionVisitant = scan.nextInt();
+	
+		switch (optionVisitant) {
+			case 1 -> seeMap();
+			case 2 -> positionMapConsult();
+			case 3 -> registerPointInterest(); 
+			default -> {
+				System.out.println("Invalid input, try again");
+				emulateAccessUsersTypes();
+			}
+		}
+	}
+
+	public void userInformationCollectorOp(){
+
+		System.out.println("""
+		Enter option
+
+		1. register a review as evidence to a proyect
+
+		2. See map and register a review to a evidence
+		3. consult a evidence/point of interest to a position in the map 
+		4. Register a review to a evidence and comments
+
+				""");
+		int optionInformationCollector = scan.nextInt();
+		
+		switch (optionInformationCollector) {
+			case 1 -> registerEvidence();
+
+			case 2 -> seeMap();
+			case 3 -> positionMapConsult();
+			case 4 -> registerPointInterest(); 
+			default -> {
+				System.out.println("Invalid input, try again");
+				emulateAccessUsersTypes();
+			}
+		}
+
+
+	}
+
+	public void userResearcherOp(){
+
+		System.out.println("""
+		Enter option
+
+		1. consult project info and their evidences
+		2. register project
+		3. modify project
+
+		4. register evidence
+		5. modify evidence
+
+		6. register point of interest
+		7. modify point of interest
+
+		8. register a review as evidence to a proyect
+
+		9. See map and register a review to a evidence
+		10. consult a evidence/point of interest to a position in the map
+		11. Register a review to a evidence and comments
+
+				""");
+
+		int optionResearcher = scan.nextInt();
+
+		switch (optionResearcher) {
+			case 1 -> infoPilarandAsociatedProyects();
+			case 2 -> registerProyect();
+			case 3 -> modifyProject();
+			case 4 -> registerEvidence();
+			case 5 -> modifyEvidence();
+			case 6 -> registerPointInterest();
+			case 7 -> modifyPointInterest();
+			case 8 -> registerEvidence();
+			case 9 -> seeMap();
+			case 10 -> positionMapConsult();
+			case 11 -> registerPointInterest(); 
+			default -> {
+				System.out.println("Invalid input, try again");
+				emulateAccessUsersTypes();
+			}
+		}
+
 	}
 
 }
