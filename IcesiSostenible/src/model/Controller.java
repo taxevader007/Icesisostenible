@@ -9,7 +9,7 @@ import java.util.Calendar;
 
 public class Controller {
     private ArrayList<User> users;
-    private ArrayList<User> emulateUsers;
+    private ArrayList<User> emulateUsers; //nosotros no podes poner los casos prueba en el programa que se va lanzar
     private Pilar[] pilars;
     private Map map;
 
@@ -469,7 +469,10 @@ public class Controller {
 	 * exitosamente" (which means "Point of interest successfully removed" in Spanish). If the point of
 	 * interest is not found or cannot be removed, the method returns "Punto de interés no eliminado" (
 	 */
-    public String removePointInterest(String pointInterestName, int x, int y) {
+    // The above code is a method in Java that takes in a point of interest name, and x and y
+	// coordinates. It is intended to remove the specified point of interest from a collection or data
+	// structure. However, the implementation of the method is missing, as indicated by the "
+	public String removePointInterest(String pointInterestName, int x, int y) {
 		for (int i = 0; i < pilars.length; i++) {
 			if (pilars[i].getProjects() != null) {
 				for (Project p : pilars[i].getProjects()) {
@@ -699,6 +702,187 @@ public class Controller {
 
 		
 	}
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * @param userName
+     * @return
+     */
+    public boolean identifyVisitant(String userName) {
+		for (User user : users) {
+			if (user instanceof Visitants) {
+				if (user.getUserName().equals(userName)) {
+					return true;
+				}
+			}
+		}
+
+        return false;
+    }
+
+    /**
+     * @param userName
+     * @return
+     */
+    public boolean identifyInformationCollector(String userName) {
+
+		for (User user : users) {
+			if (user instanceof InfoCollector) {
+				if (user.getUserName().equals(userName)) {
+					return true;
+				}
+			}
+		}
+
+
+        return false;
+    }
+
+    /**
+     * @param userName
+     * @return
+     */
+    public boolean identifyResearcher(String userName) {
+        
+		for (User user : users) {
+			if (user instanceof Researcher) {
+				if (user.getUserName().equals(userName)) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * @param userName
+	 * @return
+	 */
+	public boolean identifyUser(String userName) {
+		for (User user : users) {
+			if (user.getUserName().equals(userName)) {
+				return true;
+			}
+		}
+
+		
+		return false;
+    }
+
+	/**
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
+	public boolean identifyVisitant(String userName, String password) {
+
+		for (User user : users) {
+			if (user instanceof Visitants) {
+				if (user.getUserName().equals(userName) && user.getPassword().equals(password)) {
+					return true;
+				}
+			}
+		}
+
+
+		return false;
+	}
+
+	/**
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
+    public boolean identifyInformationCollector(String userName, String password) {
+		
+		for (User user : users) {
+			if (user instanceof InfoCollector) {
+				if (user.getUserName().equals(userName) && user.getPassword().equals(password)) {
+					return true;
+				}
+			}
+		}
+
+		
+		return false;
+    }
+
+    /**
+     * @param userName
+     * @param password
+     * @return
+     */
+    public boolean identifyResearcher(String userName, String password) {
+
+		for (User user : users) {
+			if (user instanceof Researcher) {
+				if (user.getUserName().equals(userName) && user.getPassword().equals(password)) {
+					return true;
+				}
+			}
+		}
+
+        return false;
+    }
+
+    /**
+     * @param x
+     * @param y
+     * @return
+     */
+    public String positionMapConsult(int x, int y) {
+		
+		if (map.positionMapConsult(x, y)) {
+			//Consultar a partir de la posición en el mapa la información detallada de una evidencia.
+
+			for (int i = 0; i < pilars.length; i++) {
+				if (pilars[i].getProjects() != null) {
+					for (Project p : pilars[i].getProjects()) {
+						for (PointInterest pi : p.getPointInterests()) {
+							if (pi.x() == x && pi.y() == y) {
+								StringBuilder result = new StringBuilder();
+								result.append(pi.toString()).append("\n");
+		
+								Evidence[] evidences = p.getEvidences();
+								if (evidences != null && evidences.length > 0) {
+									result.append("Evidences:\n");
+									for (Evidence evidence : evidences) {
+										result.append(evidence.toString()).append("\n");
+									}
+									result.append("Number of evidences: ").append(evidences.length).append("\n");
+								} else {
+									result.append("No evidences associated with this project.\n");
+								}
+		
+								// Agregar información del mapa
+								result.append("Map:\n").append(map.toString()).append("\n");
+		
+								return result.toString();
+							}
+						}
+					}
+				}
+			}
+
+
+		}
+
+		
+		return "No hay punto de interés en la posición indicada";
+    }
+
+
+	
 
 
 

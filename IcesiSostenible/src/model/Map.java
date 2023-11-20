@@ -63,6 +63,24 @@ public class Map {
         return pointInterest;
     }
 
-    public void removePointInterest(int x, int y) {
+    public String removePointInterest(int x, int y) {
+        String message = "";
+        if (isValidForDelete(x, y)) {
+            pointInterest[x][y] = null;
+            message = "El punto de interes ha sido eliminado";
+        } else {
+            message = "El punto de interes no existe";
+        }
+        return message;
+        
+    }
+
+    public boolean positionMapConsult(int x, int y) {
+        boolean position = false;
+        if (isValid(x, y)) {
+            position = true;
+        }
+        return position;
+        
     }
 }

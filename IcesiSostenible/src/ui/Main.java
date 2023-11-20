@@ -73,7 +73,12 @@ public class Main {
 			case 2 -> manageProyects();
 			case 3 -> manageEvidences();
 			case 4 -> managePointInterest();
-			case 5 -> testcasesUser();
+			case 5 -> {
+				testcasesUser();
+				testcasesProyect();
+				testcasesReview();
+			}
+				
 			case 6 -> infoPilarandAsociatedProyects();
 			case 7 -> infoProyectandEvidencesandTypeReviewTypeEvidence();
 			case 8 -> emulateAccessUsersTypes();
@@ -310,9 +315,9 @@ public class Main {
 
 		switch (evidenceOp) {
 			case 1 -> registerEvidence();
-				case 2 -> modifyEvidence();
-				case 3 -> rmEvidence();
-				default -> {
+			case 2 -> modifyEvidence();
+			case 3 -> rmEvidence();
+			default -> {
 					System.out.println("Invalid");
 				}
 			}
@@ -501,9 +506,9 @@ public class Main {
 	public void testcasesUser() {
 		controller.testcasesUser();
 	}
-// The above code is defining two methods: "testcasesProyect()" and "testcasesReview()". These methods
-// are calling methods from a "controller" object, which is assumed to be an instance of a class. The
-// purpose of these methods is not clear from the code provided.
+	// The above code is defining two methods: "testcasesProyect()" and "testcasesReview()". These methods
+	// are calling methods from a "controller" object, which is assumed to be an instance of a class. The
+	// purpose of these methods is not clear from the code provided.
 
 	public void testcasesProyect() {
 		controller.testcasesProyect();
@@ -534,6 +539,7 @@ public class Main {
 	// then calls a method called "controller.infoProyectandEvidencesandTypeReviewTypeEvidence" with the
 	// project name and project identifier as arguments, and prints the result of that method call.
 	public void infoProyectandEvidencesandTypeReviewTypeEvidence() {
+
 		System.out.println("Enter proyect name");
 		String proyectName = scan.next();
 		System.out.println("Enter proyect identifier");
@@ -543,9 +549,182 @@ public class Main {
 
 	}
 
+	/**
+	 * 
+	 */
+	public void seeMap (){
+		controller.printMap();
+	}
+
+	public void positionMapConsult (){
+		System.out.println("Enter x coordinate");
+		int x = scan.nextInt();
+		System.out.println("Enter y coordinate");
+		int y = scan.nextInt();
+		controller.positionMapConsult(x, y);
+	}
+
+
 	// The above code is calling a method called "emulateAccessUsersTypes" on an object called
 	// "controller".
+	/**
+	 * 
+	 */
 	public void emulateAccessUsersTypes() {
+		int op = -1;
+		System.out.println("""
+		Enter option
+		0. Exit
+		1. Login system
+		2. Register system
+		
+
+				""");
+		
+		op = scan.nextInt();
+		switch(op) {
+			case 0 :
+				System.out.println("Bye");
+				break;
+			case 1:
+				System.out.println("Login system");
+
+				System.out.println("Enter the user name: ");
+				String userName = scan.next();
+				
+				if (controller.identifyVisitant(userName)) {
+					System.out.println("password pls:");
+					String password = scan.next();
+					if (controller.identifyVisitant(userName, password)) {
+						System.out.println("welcome to sustainability Icesi  areas");
+
+						System.out.println("""
+						Enter option
+
+						1. See map and register a review to a evidence
+						2. consult a evidence/point of interest to a position in the map
+						3. Register a review to a evidence and comments
+
+								""");
+						int optionVisitant = scan.nextInt();
+						
+						switch (optionVisitant) {
+							case 1 -> seeMap();
+							case 2 -> positionMapConsult();
+							case 3 -> registerPointInterest(); 
+							default -> {
+								System.out.println("Invalid input, try again");
+								emulateAccessUsersTypes();
+							}
+						}
+					
+
+
+					} else {
+						System.out.println("The password is incorrect");
+					}
+					
+	
+
+				} else if (controller.identifyInformationCollector(userName)) {
+					System.out.println("password pls:");
+					String password = scan.next();
+					if (controller.identifyInformationCollector(userName, password)) {
+						System.out.println("welcome to sustainability Icesi  areas");
+
+						
+						System.out.println("""
+						Enter option
+
+						1. register a review as evidence to a proyect
+
+						2. See map and register a review to a evidence
+						3. consult a evidence/point of interest to a position in the map 
+						4. Register a review to a evidence and comments
+
+								""");
+						int optionInformationCollector = scan.nextInt();
+						
+						switch (optionInformationCollector) {
+							case 1 -> registerEvidence();
+
+							case 2 -> seeMap();
+							case 3 -> positionMapConsult();
+							case 4 -> registerPointInterest(); 
+							default -> {
+								System.out.println("Invalid input, try again");
+								emulateAccessUsersTypes();
+							}
+						}
+					
+
+
+
+					} else {
+						System.out.println("The password is incorrect");
+					}
+
+
+				} else if (controller.identifyResearcher(userName)) {
+					System.out.println("password pls:");
+					String password = scan.next();
+					if (controller.identifyResearcher(userName, password)) {
+						System.out.println("welcome to sustainability Icesi  areas");
+
+						System.out.println("""
+						Enter option
+
+						1. consult project info and their evidences
+						2. register project
+						3. modify project
+
+						4. register evidence
+						5. modify evidence
+			
+						6. register point of interest
+						7. modify point of interest
+
+						8. register a review as evidence to a proyect
+
+						9. See map and register a review to a evidence
+						10. consult a evidence/point of interest to a position in the map
+						11. Register a review to a evidence and comments
+
+								""");
+
+						int optionResearcher = scan.nextInt();
+
+						switch (optionResearcher) {
+							case 1 -> infoPilarandAsociatedProyects();
+							case 2 -> registerProyect();
+							case 3 -> modifyProject();
+							case 4 -> registerEvidence();
+							case 5 -> modifyEvidence();
+							case 6 -> registerPointInterest();
+							case 7 -> modifyPointInterest();
+							case 8 -> registerEvidence();
+							case 9 -> seeMap();
+							case 10 -> positionMapConsult();
+							case 11 -> registerPointInterest(); 
+							default -> {
+								System.out.println("Invalid input, try again");
+								emulateAccessUsersTypes();
+							}
+						}
+
+
+					} else {
+						System.out.println("The password is incorrect");
+					}
+				} else {
+					System.out.println("The user doesn't exist");
+				}
+		
+			default:
+				System.out.println("Invalid input, try again");
+				emulateAccessUsersTypes();
+		}
+		
 		
 		controller.emulateAccessUsersTypes();
 		//XD
